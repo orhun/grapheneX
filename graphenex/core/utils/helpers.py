@@ -16,7 +16,6 @@ import pathlib
 
 logger = GraphenexLogger(__name__)
 project_dir = pathlib.Path(__file__).absolute().parent.parent.parent
-mod_json_file = project_dir / 'modules.json'
 
 def parse_cli_args():
     """
@@ -79,7 +78,6 @@ def check_os():
     [0] -> Linux (else)
     """
     return 1 if __import__('os').name == 'nt' else 0
-
 
 def check_privileges():
     """Checks privileges and warns if they aren't sufficient"""
@@ -158,3 +156,5 @@ def get_mod_json():
     with open(mod_json_file, 'r') as json_file:
         json_data = json.load(json_file)
     return json_data
+
+mod_json_file = project_dir / f'{"windows" if check_os() else "linux"}_modules.json'
