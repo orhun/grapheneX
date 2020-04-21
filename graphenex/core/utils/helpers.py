@@ -15,7 +15,6 @@ import json
 import pathlib
 
 logger = GraphenexLogger(__name__)
-project_dir = pathlib.Path(__file__).absolute().parent.parent.parent
 
 def parse_cli_args():
     """
@@ -157,4 +156,5 @@ def get_mod_json():
         json_data = json.load(json_file)
     return json_data
 
+project_dir = pathlib.Path(__file__).absolute().parent.parent.parent
 mod_json_file = project_dir / f'{"windows" if check_os() else "linux"}_modules.json'
