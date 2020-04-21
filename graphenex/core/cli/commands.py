@@ -175,7 +175,7 @@ class ShellCommands(Help):
             with open(mod_json_file, 'w') as f:
                 json.dump(data, f, indent=4)
 
-        # Read modules.json
+        # Read modules file
         data = get_mod_json()
         try:
             edit_prompt = [
@@ -252,7 +252,7 @@ class ShellCommands(Help):
                     data[mod_ns.lower()].append(mod_dict)
                 except:
                     data.update({mod_ns.lower(): [mod_dict]})
-                # Write the updated modules.json
+                # Write the updated modules file
                 save_mod_json(data)
                 logger.info("Module added successfully. Use 'list' " + \
                     "command to see available modules.")
@@ -307,7 +307,7 @@ class ShellCommands(Help):
                     new_val = new_val.title() if selected_prop == "name" else new_val
                     # Update the selected property of module
                     data[selected_ns][mod_index][selected_prop] = new_val
-                    # Write the updated modules.json
+                    # Write the updated modules file
                     save_mod_json(data)
                     logger.info("Module updated successfully. (" + selected_ns + "/" +
                         selected_mod + ":" + selected_prop + ")")

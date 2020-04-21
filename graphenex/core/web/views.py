@@ -192,7 +192,7 @@ def add_module(mod):
                 'content': mod_error_msg
             })
             return
-        # Get modules.json
+        # Get modules file
         with open(mod_json_file, 'r') as f:
             data = json.load(f)
         # Prepare module dict
@@ -208,7 +208,7 @@ def add_module(mod):
             data[mod_ns].append(mod_dict)
         except:
             data.update({mod_ns: [mod_dict]})
-        # Update the modules.json
+        # Update the modules file
         with open(mod_json_file, 'w') as f:
             json.dump(data, f, indent=4)
         success_msg = "Module added successfully."
